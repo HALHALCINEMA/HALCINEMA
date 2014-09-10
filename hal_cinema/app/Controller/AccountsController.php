@@ -4,7 +4,7 @@ class AccountsController extends AppController{
 	
 	public $name = 'Accounts';//コントローラ名
 	//使用するモデル
-	//var $uses = array('User');
+	var $uses = array('Member_info');
 
 	//public $scaffold;
 
