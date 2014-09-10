@@ -13,4 +13,9 @@ class AccountsController extends AppController{
 
 	// ビューを使わないように設定
     //public $autoRender = false;
+
+    public function index(){//これでアクションを定義できる
+    	//同じ名前のビューファイルがあるとそこに表示される
+
+    }
 }
