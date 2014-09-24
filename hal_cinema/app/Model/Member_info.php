@@ -12,7 +12,7 @@ class Member_info extends AppModel {
 	//(Earningテーブルに上記の４つのテーブルの外部キーがある)
 	//一対多の定義は$hasManyで同じように行う。(具体例は別モデルを参照)
 	
-	public $recursive = 2;
+	public $recursive = -1;
 	//アソシエーションの範囲指定。とりあえずプロトタイプは２で。
 	//※正確にはjoinする範囲のこと
 	/*--------------------------------------*/
@@ -21,9 +21,13 @@ class Member_info extends AppModel {
 	//$validateを用いて定義する。この定義内容はモデル内で共有される。
 
 	public $validate = array(
+		'id'=> array(
+			'rule' => 'notEmpty',
+			'message' => 'メールアドレスを入力してください'
+		),
 		'password'=> array(
 			'rule' => 'notEmpty',
-			'message' => '入力必須項目です'
+			'message' => 'パスワードを入力してください'
 		),
 		'user_name'=> array(//ルールを指定するカラム名を指定
 			'rule' => 'notEmpty',//具体的なルールを記載。ここでは入力必須を設定。
@@ -67,4 +71,18 @@ class Member_info extends AppModel {
 		)
 	);
 	/*--------------------------------------------*/
+
+	//ここから独自検索メソッド定義
+	public function userCheck($member_id,$password){//ログイン時の会員チェック
+		//データベース検索情報セット
+		$params = array('conditions' => array(
+							'Member_info.id' => $member_id,
+							'Member_info.password' => $password)
+		);
+
+		//SQL実行
+		$userCheck = $this->find('all',$params);
+		debug($userCheck); 
+		return $userCheck;
+	}
 }

@@ -34,13 +34,33 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<style type="text/css" media="screen">
+		body{
+			//background: #fff;
+		}	
+	</style>
 </head>
 <body>
-	<div id="container">
+	<div id="header">
+		<div id="headerwrapper">
+			<!--ロゴ-->
+			<div id="logo"><a href=""></a></div>
+			<!--グローバルナビ-->
+			<div id="nav">
+				<ul>
+					<li><a href="">上映作品</a></li>
+					<li><a href="">上映予定作品</a></li>
+					<li><a href="">ニュース一覧</a></li>
+					<li><a href="">お問い合わせ</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
 		<div id="header">
 			<h1>春cinema</h1>
 		</div>
-		<div id="content">
+		<div class="wrapper">
 
 			<?php echo $this->Session->flash(); ?>
 
